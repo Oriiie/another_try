@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Группы</title>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Электронный журнал</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+            aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{index}">Главная</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#" th:href="@{students}">Студенты </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Группы<span class="sr-only">(current)</span></a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="py-5 text-center">
+        <h2>Управление группами</h2>
+        <p class="lead">На данной странице вы можете добавить, отредактировать поля или удалить группы</p>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <h2>Группы</h2>
+        </div>
+        <div class="col col-lg-3">
+            <a th:href="@{~/admin/groups/add_group}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+               aria-disabled="true">Добавить группу</a>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="text-justify">№</th>
+                <th class="text-justify">Группа</th>
+                <th class="text-justify">Редактировать</th>
+                <th class="text-justify">Студенты</th>
+                <th class="text-justify">Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="group : ${groups}">
+                <td class="align-middle"><span th:text="${groups.indexOf(group) + 1}"></span></td>
+                <td class="align-middle col-lg-3"><span th:text="${group.groupName}"/></td>
+                <td class="align-middle">
+                    <div class="col col-lg-3">
+                        <a th:href="@{${'~/admin/groups/update_group/' + group.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+                           aria-disabled="true"></a>
+                    </div>
+                </td>
+                <td class="align-middle">
+                    <div class="col col-lg-3">
+                        <a th:href="@{${'~/admin/students/' + group.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+                           aria-disabled="true"></a>
+                    </div>
+                </td>
+                <td class="align-middle">
+                    <div class="col col-lg-3">
+                        <a th:href="@{${'~/admin/groups/delete_group/' + group.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+                           aria-disabled="true"></a>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

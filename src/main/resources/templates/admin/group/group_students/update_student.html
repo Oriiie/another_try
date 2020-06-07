@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Добавление студента</title>
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Обновление студента группы</h2>
+        <p class="lead">Заполните поля и нажмите кнопку 'Добавить студента'</p>
+    </div>
+    <!--Тут я перестал использовать th:object, потому что началось бурное использование динамических адресов -->
+    <form enctype="multipart/form-data" action="#" th:action="@{${'/admin/students/' + group_id + '/update_student/' + student.id}}"  method="post" class="needs-validation"
+          novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="mb-3">Поля для заполнения</h4>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="lastName">Фамилия</label>
+                        <input th:field="*{student.lastName}" type="text" class="form-control" id="lastName" th:value="${student.lastName}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.lastName')}" th:errors="*{student.lastName}"/>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="firstName">Имя</label>
+                        <input th:field="*{student.firstName}" type="text" class="form-control" id="firstName" th:value="${student.firstName}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.firstName')}" th:errors="*{student.firstName}"/>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="patronymic">Отчество</label>
+                        <input th:field="*{student.patronymic}" type="text" class="form-control" id="patronymic" th:value="${student.patronymic}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.patronymic')}" th:errors="*{student.patronymic}"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="email">Электронная почта</label>
+                        <input th:field="*{student.email}" type="text" class="form-control" id="email" th:value="${student.email}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.email')}" th:errors="*{student.email}"/>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="phone">Телефон</label>
+                        <input th:field="*{student.phone}" type="text" class="form-control" id="phone" placeholder="(ХХХ) ХХХ-ХХХХ" th:value="${student.phone}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.phone')}" th:errors="*{student.phone}"/>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="age">Возраст</label>
+                        <input th:field="*{student.age}" type="number" class="form-control" id="age" th:value="${student.age}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.age')}" th:errors="*{student.age}"/>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="studentCardId">Студенческий</label>
+                        <input th:field="*{student.studentCardId}" type="text" class="form-control" id="studentCardId" th:value="${student.studentCardId}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('student.studentCardId')}" th:errors="*{student.studentCardId}"/>
+                    </div>
+                </div>
+
+                <div class=" mb-3">
+                    <label for="address">Домашний адрес</label>
+                    <input th:field="*{student.address}" type="text" class="form-control" id="address" th:value="${student.address}">
+                    <small class="text-danger" th:if="${#fields.hasErrors('student.address')}" th:errors="*{student.address}"/>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit">Подтвердить</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+
+<br/><br/><br/>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
