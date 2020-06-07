@@ -81,7 +81,7 @@ public class StudentGroupService {
     public File getStudentsData(int group_id) {
         List<Student> students = getGroupStudents(group_id);
         try {
-            PrintStream printStream = new PrintStream("C:\\Users\\Vadim\\Desktop\\kurs\\src\\main\\resources\\groupData.txt");
+            PrintStream printStream = new PrintStream("C:\\Users\\Артем\\IdeaProjects\\another_try\\src\\main\\resources\\GroupData.txt");
             for ( Student student: students) {
 
                 String login = student.getFirstName()+student.getLastName();
@@ -102,7 +102,7 @@ public class StudentGroupService {
         } catch (IOException e) {
             System.out.println("Error:" + e);
         }
-        File file = new File("C:\\Users\\Vadim\\Desktop\\kurs\\src\\main\\resources\\groupData.txt");
+        File file = new File("C:\\Users\\Артем\\IdeaProjects\\another_try\\src\\main\\resources\\GroupData.txt");
         return file;
     }
 }
