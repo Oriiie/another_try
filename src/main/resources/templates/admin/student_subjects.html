@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Студенты группы</title>
+    <title>Курсы студента</title>
 </head>
 <body class="bg-light">
 
@@ -38,22 +38,18 @@
 <div class="container-fluid">
 
     <div class="py-5 text-center">
-        <h2>Управление студентами</h2>
-        <p class="lead">На данной странице вы можете добавить, отредактировать поля или удалить студентов </p>
+        <h2>Курсы студента</h2>
+        <p class="lead">На данной странице вы можете узнать, какие курсы посещает студент </p>
     </div>
 
 
     <div class="row">
         <div class="col">
-            <h2>Группа:<span th:text="${group.groupName}"/></h2>
-        </div>
-        <div class="col-auto mr-auto">
-            <a th:href="@{${'~/admin/students/'+ group.id +'/get_data'}}" class="btn btn-primary btn-sm" role="button"
-               aria-disabled="true">Сгенерировать логины<br> и пароли</a>
+            <h2>Студент:<span th:text="${students.lastName}+ ${students.firstName}"/></h2>
         </div>
         <div class="col-lg-3">
-            <a th:href="@{${'~/admin/students/'+ group.id +'/add_student'}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
-               aria-disabled="true">Добавить студента</a>
+            <a th:href="@{${'~/admin/subjects/'+ students.id +'/add_subject'}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+               aria-disabled="true">Добавить предмет</a>
         </div>
     </div>
 
@@ -64,46 +60,22 @@
             <thead>
             <tr>
                 <th class="text-justify">#</th>
-                <th class="text-justify">Фамилия</th>
-                <th class="text-justify">Имя</th>
-                <th class="text-justify">Отчество</th>
-                <th class="text-justify">Почта</th>
-                <th class="text-justify">Телефон</th>
-                <th class="text-justify">Адрес</th>
-                <th class="text-justify">Возраст</th>
-                <th class="text-justify">Студенческий</th>
-                <th class="text-justify">Список предметов</th>
-                <th class="text-justify">Удалить</th>
-                <th class="text-justify">Редактировать</th>
+                <th class="text-justify">Название предмета</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="student : ${students}">
-                <td class="align-middle"><span th:text="${students.indexOf(student) + 1}"/></td>
-                <td class="align-middle"><span th:text="${student.lastName}"/></td>
-                <td class="align-middle"><span th:text="${student.firstName}"/></td>
-                <td class="align-middle"><span th:text="${student.patronymic}"/></td>
-                <td class="align-middle"><span th:text="${student.email}"/></td>
-                <td class="align-middle"><span th:text="${student.phone}"/></td>
-                <td class="align-middle"><span th:text="${student.address}"/></td>
-                <td class="align-middle"><span th:text="${student.age}"/></td>
-                <td class="align-middle"><span th:text="${student.studentCardId}"/></td>
+            <tr th:each="subject : ${subjects}">
+                <td class="align-middle"><span th:text="${subjects.indexOf(subject) + 1}"/></td>
+                <td class="align-middle"><span th:text="${subject.subjectName}"/></td>
                 <td class="align-middle">
                     <div class="col col-lg-3">
-                        <a th:href="@{${'~/admin/subjects/' + student.id + '/add_subject'}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+                        <a th:href="@{${'~/admin/subjects/' + students.id + '/delete_subject/' + subject.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
                            aria-disabled="true"></a>
                     </div>
                 </td>
                 <td class="align-middle">
                     <div class="col col-lg-3">
-                        <a th:href="@{${'~/admin/students/' + group.id + '/delete_student/' + student.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
-                           aria-disabled="true"></a>
-                    </div>
-                </td>
-
-                <td class="align-middle">
-                    <div class="col col-lg-3">
-                        <a th:href="@{${'~/admin/students/' + group.id + '/update_student/' + student.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
+                        <a th:href="@{${'~/admin/subjects/' + students.id + '/update_subject/' + subject.id}}" class="btn btn-lg btn-block btn-outline-primary" role="button"
                            aria-disabled="true"></a>
                     </div>
                 </td>

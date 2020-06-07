@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Начальная страница</title>
+    <title>Все студенты</title>
 </head>
 <body class="bg-light">
 
@@ -22,21 +22,48 @@
 
     <div class="collapse navbar-collapse" id="navbarsExample05">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{index}">Главная</a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#" th:href="@{students}">Студенты</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Студенты <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" th:href="@{groups}">Группы</a>
             </li>
+
+
         </ul>
+
     </div>
 </nav>
 
 <div class="container-fluid">
-    <h3 align="center" >Главная страница пользователя</h3>
+
+    <div class="py-5 text-center">
+        <h2>Все предметы</h2>
+
+    </div>
+
+    <br/>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="text-justify">№</th>
+                <th class="text-justify">Название</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="subject : ${subjects}">
+                <td class="align-middle"><span th:text="${subjects.indexOf(subject) + 1}"/></td>
+                <td class="align-middle"><span th:text="${subject.subjectName}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->

@@ -31,4 +31,5 @@ public class Group {
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Student> students;
 
+
 }
